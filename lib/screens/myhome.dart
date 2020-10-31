@@ -1,4 +1,4 @@
-import 'package:demo_app/widgets/converter.dart';
+import 'package:converter_g11/widgets/binarytodecimal.dart';
 import 'package:flutter/material.dart';
 
 class MyHome extends StatelessWidget {
@@ -6,7 +6,7 @@ class MyHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Binary to Decimal',
+        title: 'Converter Binary<->Decimal',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
@@ -14,6 +14,6 @@ class MyHome extends StatelessWidget {
             appBar: AppBar(
               title: Text('Converter'),
             ),
-            body: Center(child: Converter())));
+            body: Center(child: BinarytoDecimal())));
   }
 }
