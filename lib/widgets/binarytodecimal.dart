@@ -9,7 +9,7 @@ class BinarytoDecimal extends StatefulWidget {
 class _BinarytoDecimalState extends State<BinarytoDecimal> {
   String _binary = "";
   String _decimal = "";
-  String _textButton = "Binary -> Decimal";
+  String _textButton = "Decimal->Binary";
   bool _state = true;
 
   void _onPressed(String value) {
@@ -29,7 +29,7 @@ class _BinarytoDecimalState extends State<BinarytoDecimal> {
   void _update() {
     setState(() {
       if (_state == true) {
-        _textButton = "Binary -> Decimal";
+        _textButton = "Binary->Decimal";
         _state = false;
       } else {
         _state = true;
@@ -50,95 +50,105 @@ class _BinarytoDecimalState extends State<BinarytoDecimal> {
                 onPressed: () {
                   _update();
                 })),
-        Container(
-            padding: const EdgeInsets.all(8.0),
-            alignment: Alignment.centerRight,
-            child: Text(
-              '$_binary',
-              textAlign: TextAlign.right,
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Color(int.parse("#FF5722".replaceAll('#', '0xff'))),
-                  fontSize: 35),
-            )),
-        Text(
-          '$_decimal',
-          textAlign: TextAlign.right,
-          style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Color(int.parse("#FF5722".replaceAll('#', '0xff'))),
-              fontSize: 35),
-        ),
         Expanded(
           child: _state == false
-              ? Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                      Expanded(
-                        flex: 3,
-                        child: Container(
-                          child: Align(
-                            alignment: Alignment.centerLeft,
-                            child: MaterialButton(
-                              minWidth: 300.0,
-                              height: 320,
-                              padding: const EdgeInsets.all(8.0),
+              ? Column(
+                  children: [
+                    Container(
+                        padding: const EdgeInsets.all(8.0),
+                        alignment: Alignment.centerRight,
+                        child: Text(
+                          '$_binary',
+                          textAlign: TextAlign.right,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
                               color: Color(
-                                  int.parse("#0069C0".replaceAll('#', '0xff'))),
-                              child: Text("1",
-                                  style: new TextStyle(
-                                    fontSize: 20.0,
-                                    color: Colors.white,
-                                  )),
-                              onPressed: () {
-                                _onPressed("1");
-                              },
+                                  int.parse("#FF5722".replaceAll('#', '0xff'))),
+                              fontSize: 35),
+                        )),
+                    Container(
+                      padding: const EdgeInsets.all(8.0),
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        '$_decimal',
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.deepPurple,
+                            fontSize: 35),
+                      ),
+                    ),
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Expanded(
+                            flex: 3,
+                            child: Container(
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: MaterialButton(
+                                  minWidth: 300.0,
+                                  height: 320,
+                                  padding: const EdgeInsets.all(8.0),
+                                  color: Color(int.parse(
+                                      "#0069C0".replaceAll('#', '0xff'))),
+                                  child: Text("1",
+                                      style: new TextStyle(
+                                        fontSize: 20.0,
+                                        color: Colors.white,
+                                      )),
+                                  onPressed: () {
+                                    _onPressed("1");
+                                  },
+                                ),
+                              ),
                             ),
                           ),
-                        ),
-                      ),
-                      Spacer(),
-                      Expanded(
-                        flex: 3,
-                        child: Container(
-                          child: Align(
-                            alignment: Alignment.centerRight,
-                            child: MaterialButton(
-                              minWidth: 300.0,
-                              height: 320,
-                              padding: const EdgeInsets.all(8.0),
-                              color: Color(
-                                  int.parse("#0069C0".replaceAll('#', '0xff'))),
-                              child: Text("0",
-                                  style: new TextStyle(
-                                    fontSize: 20.0,
-                                    color: Colors.white,
-                                  )),
-                              onPressed: () {
-                                _onPressed("0");
-                              },
+                          Spacer(),
+                          Expanded(
+                            flex: 3,
+                            child: Container(
+                              child: Align(
+                                alignment: Alignment.centerRight,
+                                child: MaterialButton(
+                                  minWidth: 300.0,
+                                  height: 320,
+                                  padding: const EdgeInsets.all(8.0),
+                                  color: Color(int.parse(
+                                      "#0069C0".replaceAll('#', '0xff'))),
+                                  child: Text("0",
+                                      style: new TextStyle(
+                                        fontSize: 20.0,
+                                        color: Colors.white,
+                                      )),
+                                  onPressed: () {
+                                    _onPressed("0");
+                                  },
+                                ),
+                              ),
                             ),
                           ),
-                        ),
+                        ]),
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        padding: const EdgeInsets.all(8.0),
+                        child: MaterialButton(
+                            color: Color(
+                                int.parse("#0069C0".replaceAll('#', '0xff'))),
+                            onPressed: () {
+                              _reset();
+                            },
+                            child: Text("Reset",
+                                style: new TextStyle(
+                                  fontSize: 20.0,
+                                  color: Colors.white,
+                                ))),
                       ),
-                    ])
+                    )
+                  ],
+                )
               : DecimaltoBinary(),
-        ),
-        Expanded(
-          flex: 1,
-          child: Container(
-            padding: const EdgeInsets.all(8.0),
-            child: MaterialButton(
-                color: Color(int.parse("#0069C0".replaceAll('#', '0xff'))),
-                onPressed: () {
-                  _reset();
-                },
-                child: Text("Reset",
-                    style: new TextStyle(
-                      fontSize: 20.0,
-                      color: Colors.white,
-                    ))),
-          ),
         ),
       ]),
     );
